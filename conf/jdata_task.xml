@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+this file use to describe the calculation tasks
+label '<outputDir>' must be absolute path and end with '/'
+label '<outputFormat>' can only contains [json, csv, text_tab]
+-->
+<tasks>
+    <task>
+        <sqlTask>select user_id, count(distinct sku_id) as sku_cnt, count(*) rec_cnt, count(distinct cate) as cate_cnt, count(distinct brand) as bra_cnt, count(distinct model_id) as mod_cnt from action where type = 1 group by user_id</sqlTask>
+        <input>action</input>
+        <outputName>view</outputName>
+        <outputDir>file:///home/gpt43t/zxd/data/sseu_test/</outputDir>
+        <outputFormat>text_tab</outputFormat>
+        <saveSchema>true</saveSchema>
+        <cacheAble>true</cacheAble>
+    </task>
+    <task>
+        <sqlTask>select user_id, count(distinct sku_id) as sku_cnt, count(*) rec_cnt, count(distinct cate) as cate_cnt, count(distinct brand) as bra_cnt, count(distinct model_id) as mod_cnt from action  where type = 2  group by user_id</sqlTask>
+        <input>action</input>
+        <outputName>add</outputName>
+        <outputDir>file:///home/gpt43t/zxd/data/sseu_test/</outputDir>
+        <outputFormat>text_tab</outputFormat>
+        <saveSchema>true</saveSchema>
+        <cacheAble>true</cacheAble>
+    </task>
+    <task>
+        <sqlTask>select user_id, count(distinct sku_id) as sku_cnt, count(*) rec_cnt, count(distinct cate) as cate_cnt, count(distinct brand) as bra_cnt, count(distinct model_id) as mod_cnt from action where type = 3 group by user_id</sqlTask>
+        <input>action</input>
+        <outputName>del</outputName>
+        <outputDir>file:///home/gpt43t/zxd/data/sseu_test/</outputDir>
+        <outputFormat>text_tab</outputFormat>
+        <saveSchema>true</saveSchema>
+        <cacheAble>true</cacheAble>
+    </task>
+    <task>
+        <sqlTask>select user_id, count(distinct sku_id) as sku_cnt, count(*) rec_cnt, count(distinct cate) as cate_cnt, count(distinct brand) as bra_cnt, count(distinct model_id) as mod_cnt from action where type = 4 group by user_id</sqlTask>
+        <input>action</input>
+        <outputName>buy</outputName>
+        <outputDir>file:///home/gpt43t/zxd/data/sseu_test/</outputDir>
+        <outputFormat>text_tab</outputFormat>
+        <saveSchema>true</saveSchema>
+        <cacheAble>true</cacheAble>
+    </task>
+    <task>
+        <sqlTask>select user_id, count(distinct sku_id) as sku_cnt, count(*) rec_cnt, count(distinct cate) as cate_cnt, count(distinct brand) as bra_cnt, count(distinct model_id) as mod_cnt from action where type = 5 group by user_id</sqlTask>
+        <input>action</input>
+        <outputName>follow</outputName>
+        <outputDir>file:///home/gpt43t/zxd/data/sseu_test/</outputDir>
+        <outputFormat>text_tab</outputFormat>
+        <saveSchema>true</saveSchema>
+        <cacheAble>true</cacheAble>
+    </task>
+    <task>
+        <sqlTask>select user_id, count(distinct sku_id) as sku_cnt, count(*) rec_cnt, count(distinct cate) as cate_cnt, count(distinct brand) as bra_cnt, count(distinct model_id) as mod_cnt from action where type = 6 group by user_id</sqlTask>
+        <input>action</input>
+        <outputName>click</outputName>
+        <outputDir>file:///home/gpt43t/zxd/data/sseu_test/</outputDir>
+        <outputFormat>text_tab</outputFormat>
+        <saveSchema>true</saveSchema>
+        <cacheAble>true</cacheAble>
+    </task>
+    <task>
+        <sqlTask>select view.user_id as uid, view.sku_cnt as view_sku_cnt, add.sku_cnt as add_sku_cnt, del.sku_cnt as del_sku_cnt, buy.sku_cnt as buy_sku_cnt, follow.sku_cnt as follow_sku_cnt, click.sku_cnt as click_sku_cnt from view left join add on view.user_id=add.user_id left join del on view.user_id=del.user_id left join buy on view.user_id=buy.user_id left join follow on view.user_id=follow.user_id left join click on view.user_id=click.user_id</sqlTask>
+        <input>view,add,del,buy,follow,click</input>
+        <outputName>sku_cnt</outputName>
+        <outputDir>file:///home/gpt43t/zxd/data/sseu_test/</outputDir>
+        <outputFormat>text_tab</outputFormat>
+        <saveSchema>true</saveSchema>
+        <cacheAble>true</cacheAble>
+    </task>
+    <task>
+        <sqlTask>select view.user_id as uid, view.rec_cnt as view_rec_cnt, add.rec_cnt as add_rec_cnt, del.rec_cnt as del_rec_cnt, buy.rec_cnt as buy_rec_cnt, follow.rec_cnt as follow_rec_cnt, click.rec_cnt as click_rec_cnt from view left join add on view.user_id=add.user_id left join del on view.user_id=del.user_id left join buy on view.user_id=buy.user_id left join follow on view.user_id=follow.user_id left join click on view.user_id=click.user_id</sqlTask>
+        <input>view,add,del,buy,follow,click</input>
+        <outputName>rec_cnt</outputName>
+        <outputDir>file:///home/gpt43t/zxd/data/sseu_test/</outputDir>
+        <outputFormat>text_tab</outputFormat>
+        <saveSchema>true</saveSchema>
+        <cacheAble>true</cacheAble>
+    </task>
+    <task>
+        <sqlTask>select view.user_id as uid, view.cate_cnt as view_cate_cnt, add.cate_cnt as add_cate_cnt, del.cate_cnt as del_cate_cnt, buy.cate_cnt as buy_cate_cnt, follow.cate_cnt as follow_cate_cnt, click.cate_cnt as click_cate_cnt from view left join add on view.user_id=add.user_id left join del on view.user_id=del.user_id left join buy on view.user_id=buy.user_id left join follow on view.user_id=follow.user_id left join click on view.user_id=click.user_id</sqlTask>
+        <input>view,add,del,buy,follow,click</input>
+        <outputName>cate_cnt</outputName>
+        <outputDir>file:///home/gpt43t/zxd/data/sseu_test/</outputDir>
+        <outputFormat>text_tab</outputFormat>
+        <saveSchema>true</saveSchema>
+        <cacheAble>true</cacheAble>
+    </task>
+    <task>
+        <sqlTask>select view.user_id as uid, view.bra_cnt as view_bra_cnt, add.bra_cnt as add_bra_cnt, del.bra_cnt as del_bra_cnt, buy.bra_cnt as buy_bra_cnt, follow.bra_cnt as follow_bra_cnt, click.bra_cnt as click_bra_cnt from view left join add on view.user_id=add.user_id left join del on view.user_id=del.user_id left join buy on view.user_id=buy.user_id left join follow on view.user_id=follow.user_id left join click on view.user_id=click.user_id</sqlTask>
+        <input>view,add,del,buy,follow,click</input>
+        <outputName>bra_cnt</outputName>
+        <outputDir>file:///home/gpt43t/zxd/data/sseu_test/</outputDir>
+        <outputFormat>text_tab</outputFormat>
+        <saveSchema>true</saveSchema>
+        <cacheAble>true</cacheAble>
+    </task>
+    <task>
+        <sqlTask>select view.user_id as uid, view.mod_cnt as view_mod_cnt, add.mod_cnt as add_mod_cnt, del.mod_cnt as del_mod_cnt, buy.mod_cnt as buy_mod_cnt, follow.mod_cnt as follow_mod_cnt, click.mod_cnt as click_mod_cnt from view left join add on view.user_id=add.user_id left join del on view.user_id=del.user_id left join buy on view.user_id=buy.user_id left join follow on view.user_id=follow.user_id left join click on view.user_id=click.user_id</sqlTask>
+        <input>view,add,del,buy,follow,click</input>
+        <outputName>mod_cnt</outputName>
+        <outputDir>file:///home/gpt43t/zxd/data/sseu_test/</outputDir>
+        <outputFormat>text_tab</outputFormat>
+        <saveSchema>true</saveSchema>
+        <cacheAble>true</cacheAble>
+    </task>
+    <task>
+        <sqlTask>select user.user_id, user.age, user.sex, user.user_lv_cd, view_sku_cnt, add_sku_cnt, del_sku_cnt, buy_sku_cnt, follow_sku_cnt, click_sku_cnt, view_rec_cnt, add_rec_cnt, del_rec_cnt, buy_rec_cnt, follow_rec_cnt, click_rec_cnt, view_cate_cnt, add_cate_cnt, del_cate_cnt, buy_cate_cnt, follow_cate_cnt, click_cate_cnt, view_bra_cnt, add_bra_cnt, del_bra_cnt, buy_bra_cnt, follow_bra_cnt, click_bra_cnt, view_mod_cnt, add_mod_cnt, del_mod_cnt, buy_mod_cnt, follow_mod_cnt, click_mod_cnt from user left join sku_cnt on user.user_id=sku_cnt.uid left join rec_cnt on user.user_id=rec_cnt.uid  left join cate_cnt on user.user_id=cate_cnt.uid left join bra_cnt on user.user_id=bra_cnt.uid left join mod_cnt on user.user_id=mod_cnt.uid</sqlTask>
+        <input>user,sku_cnt,rec_cnt,cate_cnt,mod_cnt,bra_cnt</input>
+        <outputName>result</outputName>
+        <outputDir>file:///home/gpt43t/zxd/data/sseu_test/</outputDir>
+        <outputFormat>text_tab</outputFormat>
+        <saveSchema>true</saveSchema>
+        <cacheAble>false</cacheAble>
+    </task>
+</tasks>

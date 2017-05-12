@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+this file use to describe configurations
+the mode which is local or cluster is depend to spark.master setted in '<sparkParam>', default is local
+-->
+<conf>
+    <memory>64G</memory>
+    <cores>12</cores>
+    <master>local[12]</master>
+    <hdfsUri>hdfs://master:9000</hdfsUri>
+    <sparkParam>
+
+    </sparkParam>
+    <!--<platformParam></platformParam>-->
+</conf>

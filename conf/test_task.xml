@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+this file use to describe the calculation tasks
+label '<outputDir>' must be absolute path and end with '/'
+label '<outputFormat>' can only contains [json, csv, text_tab]
+-->
+<tasks>
+    <task>
+        <sqlTask>select count(distinct 66_gl_sip) from c3</sqlTask>
+        <input>c3</input>
+        <outputName>66_gl_sip_cnt</outputName>
+        <outputDir>file:///home/gpt43t/zxd/data/</outputDir>
+        <outputFormat>text_tab</outputFormat>
+        <saveSchema>true</saveSchema>
+        <cacheAble>false</cacheAble>
+    </task>
+</tasks>
