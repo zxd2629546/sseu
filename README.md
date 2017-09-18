@@ -4,12 +4,12 @@ SparkSQL Easy Use
 This project is designed to benefit people who don't know how to use
 Spark by writing three simple xml files.
 
-##How to use
+## How to use
 
 To build your task, you should build three xml to describe table, task
 and configurations.
 
-###XML for Table
+### XML for Table
 
 This file can describe source file you are going to load.
 
@@ -29,7 +29,7 @@ Schema file need format as follow:
 |:---:|----------|----|
 |1|test|Integer|
 
-###XML for Task
+### XML for Task
 
 This file can describe sql task, basic format as follow:
 
@@ -43,7 +43,7 @@ This file can describe sql task, basic format as follow:
         <cacheAble>true</cacheAble>
     </task>
     
-###XML for Configure
+### XML for Configure
 
 This file mostly for setting Spark configurations
 
@@ -60,12 +60,12 @@ This file mostly for setting Spark configurations
 
 Go to `conf/` for more detail.
 
-##Run
+## Run
 
 You can simply use `scala -J-Xmx4g -cp "spark/jars/*:sseu.jar" dk.zxd.SSEU table conf/your_table task conf/your_task.xml conf/your_conf.xml`
 
 
-##Advanced
+## Advanced
 
 To deal with daily logs, you can use linux command `sed`, template
 xml files and `crontab` to make it.
