@@ -4,6 +4,12 @@ SparkSQL Easy Use
 This project is designed to benefit people who don't know how to use
 Spark by writing three simple xml files.
 
+## Requirements
+
+* spark 2.x
+* scala 2.11.x or later
+* jdk 1.7 or later
+
 ## How to use
 
 To build your task, you should build three xml to describe table, task
@@ -43,7 +49,7 @@ This file can describe sql task, basic format as follow:
         <cacheAble>true</cacheAble>
     </task>
     
-### XML for Configure
+### XML for Configuration
 
 This file mostly for setting Spark configurations
 
