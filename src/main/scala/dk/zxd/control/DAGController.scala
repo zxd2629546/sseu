@@ -93,10 +93,10 @@ class DAGController(
 object DAGController {
     val APP_NAME = "Spark SQL Easy Use Engine"
     def apply(params: Map[String, String]) = {
-        val tableXmlPath = params("table_xml_path")
-        val taskXmlPath = params("task_xml_path")
-        val confXmlPath = params("conf_xml_path")
-        val hdfsNameNodeUri = params("hdfs_name_node_uri")
+        val tableXmlPath = params("table")
+        val taskXmlPath = params("task")
+        val confXmlPath = params("conf")
+        val hdfsNameNodeUri = params("hdfs")
 
         val conf = XMLParser.confParse(confXmlPath)
         val tables = XMLParser.tableParse(tableXmlPath)
