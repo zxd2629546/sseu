@@ -10,6 +10,10 @@ object SSEU {
     private val logger = Logger.getLogger(SSEU.getClass)
 
     def main(args: Array[String]): Unit = {
+        if (args.length != 6) {
+            println("USSAGE: params should be \"table table_file_path task task_file_path conf conf_file_path\"")
+            System.exit(-1)
+        }
         val params = 0.to(args.length, 2).map(i => {
             (args(i), args(i + 1))
         }).toMap
