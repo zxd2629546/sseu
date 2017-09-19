@@ -2,8 +2,11 @@
   <library name="Gradle: org.scala-lang:scala-reflect:2.12.1">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/Could not resolve org.scala-lang:scala-reflect:2.12.1." />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.scala-lang/scala-reflect/2.12.1/f6ae9e1c0204a3e92893d9a2188b276278f2074e/scala-reflect-2.12.1.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.scala-lang/scala-reflect/2.12.1/a31c5e285c7b70d15f446d919ec01f632c06991d/scala-reflect-2.12.1-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

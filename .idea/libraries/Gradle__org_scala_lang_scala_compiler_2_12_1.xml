@@ -2,8 +2,11 @@
   <library name="Gradle: org.scala-lang:scala-compiler:2.12.1">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/Could not resolve org.scala-lang:scala-compiler:2.12.1." />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.scala-lang/scala-compiler/2.12.1/73ba7c52af8bcaae57eba191f74e2a9a946a1049/scala-compiler-2.12.1.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.scala-lang/scala-compiler/2.12.1/1214039c3af94f704a0e38e7b3f848afd8fa24f8/scala-compiler-2.12.1-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>
