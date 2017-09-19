@@ -1,7 +1,8 @@
 group 'dk.zxd'
 version '1.0-SNAPSHOT'
 
-apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'scala'
 
 sourceCompatibility = 1.8
 
@@ -14,5 +15,8 @@ dependencies {
     compile group: 'org.apache.spark', name: 'spark-core_2.10', version: '2.0.1'
     // https://mvnrepository.com/artifact/org.apache.spark/spark-sql_2.10
     compile group: 'org.apache.spark', name: 'spark-sql_2.10', version: '2.1.0'
+    compile "org.scala-lang:scala-library:2.12.1"
+    compile "org.scala-lang:scala-compiler:2.12.1"
+    compile "org.scala-lang:scala-reflect:2.12.1"
 
 }
