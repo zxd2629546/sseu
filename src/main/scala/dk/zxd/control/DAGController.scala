@@ -24,9 +24,6 @@ class DAGController(
         builder.master(conf.master)
         logger.info(s"set master at ${conf.master}")
         spark = builder.appName(DAGController.APP_NAME).getOrCreate()
-        if(conf.hdfsUri != null) {
-            FileHelper.initHdfs(conf.hdfsUri)
-        }
         dagHelper.init()
         dagHelper.order()
         logger.info("init complete")
@@ -96,12 +93,12 @@ object DAGController {
         val tableXmlPath = params("table")
         val taskXmlPath = params("task")
         val confXmlPath = params("conf")
-        val hdfsNameNodeUri = params("hdfs")
+        val hdfsNameNodeUri = if (params.contains("hdfs")) params("hdfs") else null
 
         val conf = XMLParser.confParse(confXmlPath)
         val tables = XMLParser.tableParse(tableXmlPath)
         val tasks = XMLParser.taskParse(taskXmlPath)
-        FileHelper.initHdfs(hdfsNameNodeUri)
+        if (hdfsNameNodeUri != null)FileHelper.initHdfs(hdfsNameNodeUri)
         val dagHelper = new DAGHelper(tables, tasks)
         new DAGController(conf, tables, tasks, dagHelper)
     }

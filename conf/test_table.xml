@@ -6,9 +6,11 @@ label '<format>' can only contains [json, csv, text, text_space, text_tab, text_
 <tables>
     <table>
         <name>c3</name>
-        <input>file:///home/gpt43t/zxd/data/20170414/c3_succ.test</input>
+        <!--<input>file:///home/gpt43t/zxd/data/20170414/c3_succ.test</input>-->
+        <input>hdfs://master:9000/zxd/c3_succ.test</input>
         <format>text</format>
-        <schema>file:///home/gpt43t/zxd/spark/cert/pos_name_si2.txt</schema>
+        <!--<schema>file:///home/gpt43t/zxd/spark/cert/pos_name_si2.txt</schema>-->
+        <schema>hdfs://master:9000/zxd/pos_name_si2.txt</schema>
         <partitions>200</partitions>
     </table>
 </tables>

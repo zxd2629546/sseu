@@ -9,6 +9,7 @@ class Task(val sqlTask: String,
     var outputDir: String = null
     var outputFormat: String = Table.TEXT_TAB_FORMAT
     var saveSchema: Boolean = true
+    var overwrite: Boolean = true
 
     override def name(): String = outputName
 

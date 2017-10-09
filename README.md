@@ -68,7 +68,7 @@ Go to `conf/` for more detail.
 
 ## Run
 
-You can simply use `scala -J-Xmx4g -cp "spark/jars/*:sseu.jar" dk.zxd.SSEU table conf/your_table.xml task conf/your_task.xml conf conf/your_conf.xml`
+You can simply use `scala -J-Xmx4g -cp "spark/jars/*:sseu.jar" dk.zxd.SSEU table conf/your_table.xml task conf/your_task.xml conf conf/your_conf.xml hdfs hdfs://localhost:9000`
 
 
 ## Advanced

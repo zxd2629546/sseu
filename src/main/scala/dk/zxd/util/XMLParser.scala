@@ -48,9 +48,11 @@ object XMLParser {
                 case <outputFormat>{text}</outputFormat> => task.outputFormat = text.text
                 case <saveSchema>{text}</saveSchema> => task.saveSchema = text.text.toBoolean
                 case <cacheAble>{text}</cacheAble> => task.cacheAble = text.text.toBoolean
+                case <overwrite>{text}</overwrite> => task.overwrite = text.text.toBoolean
                 case _ =>
             })
-            if (!(task.outputDir.startsWith("file://") || task.outputDir.startsWith("hdfs://"))) {
+            if (task.outputDir != null &&
+                    !(task.outputDir.startsWith("file://") || task.outputDir.startsWith("hdfs://"))) {
                 logger.error("Unknown protocol, only 'hdfs://' or 'file://' can be accepted")
                 throw new IllegalArgumentException
             }
@@ -68,12 +70,12 @@ object XMLParser {
         val memory = (confXml \ "memory").text
         val cores = (confXml \ "cores").text.toInt
         val master = (confXml \ "master").text
-        val hdfsUri = getText(confXml \ "hdfsUri", null)
-        val conf = Conf(memory, cores, master, hdfsUri)
-        (confXml \ "conf").foreach({
-            case <sparkParam>{tup}</sparkParam> => conf.sparkParams += (tup \ "key").text -> (tup \ "value").text
-            case <platformParam>{tup}</platformParam> => conf.platformParams += (tup \ "key").text -> (tup \ "value").text
-            case _ =>
+        val conf = Conf(memory, cores, master)
+        (confXml \ "sparkParam").foreach(x => {
+            conf.sparkParams += (x \ "key").text -> (x \ "value").text
+        })
+        (confXml \ "platformParam").foreach(x => {
+            conf.sparkParams += (x \ "key").text -> (x \ "value").text
         })
         logger.info(s"confParse: ${conf}")
         conf

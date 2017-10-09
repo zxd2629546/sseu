@@ -4,12 +4,17 @@ this file use to describe configurations
 the mode which is local or cluster is depend to spark.master setted in '<sparkParam>', default is local
 -->
 <conf>
-    <memory>64G</memory>
+    <memory>64g</memory>
     <cores>12</cores>
-    <master>local[12]</master>
+    <master>spark://master:7077</master>
     <hdfsUri>hdfs://master:9000</hdfsUri>
     <sparkParam>
-
+        <key>spark.executor.instances</key>
+        <value>3</value>
+    </sparkParam>
+    <sparkParam>
+        <key>spark.jars</key>
+        <value>/home/gpt43t/zxd/spark/sseu/code/sseu/out/artifacts/sseu/sseu.jar</value>
     </sparkParam>
     <!--<platformParam></platformParam>-->
 </conf>

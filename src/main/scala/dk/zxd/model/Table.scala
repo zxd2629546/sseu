@@ -23,7 +23,7 @@ class Table(val tableName: String,
     def calculatePartitions() : Unit = {
         //TO-DO: get input file size, calculate partitions
         val fileSize = FileHelper.getFilesSize(inputPath)
-        partitions = Math.max(Math.ceil(fileSize / (8 * 1024 * 1024l)).toInt, 1)
+        partitions = Math.max(Math.ceil(fileSize / (32 * 1024 * 1024l)).toInt, 1)
         loggger.info(s"fileSize:$fileSize\tpartitions:$partitions")
     }
 

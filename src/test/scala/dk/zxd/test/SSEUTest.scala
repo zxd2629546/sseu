@@ -11,10 +11,10 @@ class SSEUTest {
     @Test
     def sseuTest(): Unit = {
         val params = Map(
-            "table_xml_path" -> "conf/jdata_table.xml",
-            "task_xml_path" -> "conf/jdata_task.xml",
-            "conf_xml_path" -> "conf/test_conf.xml",
-            "hdfs_name_node_uri" -> "hdfs://master:9000"
+            "table" -> "conf/test_table.xml",
+            "task" -> "conf/test_task.xml",
+            "conf" -> "conf/test_conf.xml",
+            "hdfs" -> "hdfs://master:9000"
         )
         SSEU.sseu(params)
     }

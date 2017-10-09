@@ -9,9 +9,11 @@ label '<outputFormat>' can only contains [json, csv, text_tab]
         <sqlTask>select count(distinct 66_gl_sip) from c3</sqlTask>
         <input>c3</input>
         <outputName>66_gl_sip_cnt</outputName>
-        <outputDir>file:///home/gpt43t/zxd/data/</outputDir>
+        <!--<outputDir>file:///home/gpt43t/zxd/data/</outputDir>-->
+        <outputDir>hdfs://master:9000/zxd/</outputDir>
         <outputFormat>text_tab</outputFormat>
         <saveSchema>true</saveSchema>
+        <overwrite>true</overwrite>
         <cacheAble>false</cacheAble>
     </task>
 </tasks>

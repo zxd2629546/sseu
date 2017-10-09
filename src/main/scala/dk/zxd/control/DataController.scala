@@ -29,7 +29,7 @@ object DataController {
         table.inputFormat match {
             case Table.CSV_FORMAT => {
                 val inputFile = spark.read.option("header", "true")
-                        .csv(table.inputPath).repartition(table.partitions)
+                        .csv(table.inputPath)//.repartition(table.partitions)
                 val encoder = RowEncoder(inputFile.schema)
                 val data = inputFile.map(row => Row.fromSeq(
                     index.value.map(idx => cast(row(idx._1 - 1), idx._3))
@@ -37,7 +37,7 @@ object DataController {
                 registView(spark, data, schema, table)
             }
             case Table.JSON_FORMAT => {
-                val data = spark.read.json(table.name()).repartition(table.partitions)
+                val data = spark.read.json(table.inputPath)//.repartition(table.partitions)
                 registView(data, table)
             }
             case Table.TEXT_FORMAT => {
@@ -73,7 +73,7 @@ object DataController {
             } catch {
                 case e: Exception => {
                     logger.error(s"x:$x\ttype:$t")
-                    0
+                    throw e
                 }
             }
         }
@@ -84,9 +84,21 @@ object DataController {
                          splitRegx: String) = {
         logger.info(s"load table:${table.name()} with $splitRegx and ${table.partitions} partitions")
         spark.sparkContext.textFile(table.inputPath, table.partitions)
-          .map(line => {
-            val items = line.split(splitRegx)
-            Row.fromSeq(index.value.map(idx => cast(items(idx._1 - 1), idx._3)))
+          .flatMap(line => {
+              val items = line.split(splitRegx)
+              var ok = true
+              val row = Row.fromSeq(index.value.map(idx => {
+                  try {
+                      cast(items(idx._1 - 1), idx._3)
+                  } catch {
+                      case e: Exception => {
+                          ok = false
+                          e.printStackTrace
+                      }
+                  }
+              }))
+              if (ok) row :: Nil
+              else Nil
         })
     }
 
@@ -122,7 +134,7 @@ object DataController {
 
     def save(spark: SparkSession, data: DataFrame, task: Task) = {
         if (task.outputDir != null || task.outputFormat != null) {
-            val savePath = task.outputDir + task.outputName
+            val savePath = s"${task.outputDir}${task.outputName}${if(task.overwrite) "" else "_" + System.currentTimeMillis()}"
             logger.info(s"save ${task.name()} to $savePath")
             val writer = data.write.mode("overwrite")
             task.outputFormat match {
